@@ -2,18 +2,36 @@ import React, { useState, useEffect } from "react";
 import App from "../../App";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import NavigationBar from "../NavigationBar/NavigationBar";
+//updated to reflect correct naming in user stories
 
-const DisplayMusic = (props) => {
+const MusicTable = () => {
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     getAllSongs();
+    // createSong();
   }, []);
 
   async function getAllSongs() {
     let response = await axios.get("http://127.0.0.1:8000/api/music/");
     setSongs(response.data);
   }
+
+  // async function createSong(newSong) {
+  //   // let newSong = {
+  //     // "title": "...but home is nowhere",
+  //     // "artist": "AFI",
+  //     // "album": "Sing the Sorrow",
+  //     // "release_date": "2003-03-11",
+  //     // "genre": "post-hardcore, emo"
+  //   // }
+  //   let response = await axios.post("http://127.0.0.1:8000/api/music/", newSong);
+  //   if(response.status === 201){
+  //     await getAllSongs();
+  //   }
+  //   setSongs(response.data);
+  // }
 
   const DisplayMusicTable = () => {
     return (
@@ -26,7 +44,7 @@ const DisplayMusic = (props) => {
             <th scope="col">Album</th>
             <th scope="col">Release Date</th>
             <th scope="col">Genre</th>
-            <th scope="col">Likes</th>
+            <th scope="col">❤️</th>
           </tr>
         </thead>
         <tbody>
@@ -47,39 +65,12 @@ const DisplayMusic = (props) => {
       </table>
     );
   };
-  //   return props.parentMusic.map((music, index) => (
-  // //   props.parentMusic.map((music, index) => (
-  // //     <div key={index}>
-  // //       <App music={music} />
-  // //     </div>
-  // //   ));
-
-  // <table class="table">
-  //   <caption>Music Library</caption>
-  //   <thead>
-  //     <tr>
-  //       <th scope="col">#</th>
-  //       <th scope="col">Title</th>
-  //       <th scope="col">Artist</th>
-  //       <th scope="col">Album</th>
-  //       <th scope="col">Release Date</th>
-  //       <th scope="col">Genre</th>
-  //       <th scope="col">Likes</th>
-  //     </tr>
-  //   </thead>
-  //   <tbody>
-
-  //     <div key={index}>
-  //       <App music={music} />
-  //     </div>
-  //   </tbody>
-  // </table>
-  //   ))
+ 
   return (
 <div>
-    <DisplayMusicTable/>
+    <DisplayMusicTable/> 
 </div>
   ) 
 };
 
-export default DisplayMusic;
+export default MusicTable;
