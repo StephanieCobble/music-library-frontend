@@ -36,7 +36,7 @@ const MusicTable = () => {
   const DisplayMusicTable = () => {
     return (
       <table className="table">
-        <thead>
+        <thead className="font">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
@@ -47,7 +47,7 @@ const MusicTable = () => {
             <th scope="col">❤️</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="font">
           {songs.map((music, index) => {
             return (
               <tr>

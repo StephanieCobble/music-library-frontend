@@ -8,12 +8,16 @@ import AddSong from './Components/AddSong/AddSong';
 function App() {
 
   return (
-    <div >
+    <div className='background-image' >
+    <div className='content'> 
+      
       <NavigationBar/>
       <AddSong />
       <MusicTable />
       <SearchBar />
+      </div>
     </div>
+    
   );
 }
 

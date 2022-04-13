@@ -17,7 +17,21 @@ export default function SearchBar() {
     setSongs(response.data);
   }
   return (
-    <div className="app">
+
+<table className="table">
+        <thead className="font">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Album</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Genre</th>
+            <th scope="col">❤️</th>
+          </tr>
+        </thead>
+
+    <tbody className="font" >
       <input
         placeholder="Enter Search"
         className="search-bar"
@@ -42,15 +56,19 @@ export default function SearchBar() {
           return music;
         }
       }).map((music, index) => (
-        <div className="box" key={index}>
-          <p>{music.title}</p>
-          <p>{music.artist}</p>
-          <p>{music.album}</p>
-          <p>{music.release_date}</p>
-          <p>{music.genre}</p>
-        </div>
+        <tr key={index}>
+          <td>{music.title}</td>
+          <td>{music.artist}</td>
+          <td>{music.album}</td>
+          <td>{music.release_date}</td>
+          <td>{music.genre}</td>
+        </tr>
       ))}
-    </div>
+    </tbody>
+
+</table>
+
+
   );
 }
 
