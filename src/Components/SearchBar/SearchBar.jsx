@@ -1,4 +1,3 @@
-import MusicTable from "../MusicTable/MusicTable";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './../../App.css'
@@ -17,8 +16,14 @@ export default function SearchBar() {
     setSongs(response.data);
   }
   return (
-
+    <> 
+    <input
+    placeholder="Enter Search"
+    className="search-bar"
+    onChange={(event) => setQuery(event.target.value)}
+  />
 <table className="table">
+  
         <thead className="font">
           <tr>
             <th scope="col">#</th>
@@ -32,15 +37,15 @@ export default function SearchBar() {
         </thead>
 
     <tbody className="font" >
-      <input
-        placeholder="Enter Search"
-        className="search-bar"
-        onChange={(event) => setQuery(event.target.value)}
-      />
+     
       {songs.filter((music) => {
         if (query === "") {
           return music;
-        } else if (music.artist.toLowerCase().includes(query.toLowerCase())) {
+        } 
+        else if (music.id.toLowerCase().includes(query.toLowerCase())) {
+          return music;
+        }
+        else if (music.artist.toLowerCase().includes(query.toLowerCase())) {
           return music;
         }
         else if (music.title.toLowerCase().includes(query.toLowerCase())) {
@@ -55,19 +60,24 @@ export default function SearchBar() {
         else if (music.genre.toLowerCase().includes(query.toLowerCase())) {
           return music;
         }
+        else if (music.like.toLowerCase().includes(query.toLowerCase())) {
+          return music;
+        }
       }).map((music, index) => (
         <tr key={index}>
+          <td>{music.id}</td>
           <td>{music.title}</td>
           <td>{music.artist}</td>
           <td>{music.album}</td>
           <td>{music.release_date}</td>
           <td>{music.genre}</td>
+          <td>{music.like}</td>
         </tr>
       ))}
     </tbody>
 
 </table>
-
+</>
 
   );
 }

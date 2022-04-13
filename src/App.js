@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import NavigationBar from './Components/NavigationBar/NavigationBar';
 import SearchBar from './Components/SearchBar/SearchBar';
 import AddSong from './Components/AddSong/AddSong'; 
+import DeleteSong from './Components/DeleteSong/DeleteSong';
 
 function App() {
 
@@ -14,6 +14,7 @@ function App() {
       <NavigationBar/>
       <AddSong />
       <MusicTable />
+     
       <SearchBar />
       </div>
     </div>

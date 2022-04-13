@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import App from "../../App";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavigationBar from "../NavigationBar/NavigationBar";
+import DeleteSong from "../DeleteSong/DeleteSong";
+
 //updated to reflect correct naming in user stories
 
 const MusicTable = () => {
@@ -10,7 +10,7 @@ const MusicTable = () => {
 
   useEffect(() => {
     getAllSongs();
-    // createSong();
+   
   }, []);
 
   async function getAllSongs() {
@@ -18,20 +18,7 @@ const MusicTable = () => {
     setSongs(response.data);
   }
 
-  // async function createSong(newSong) {
-  //   // let newSong = {
-  //     // "title": "...but home is nowhere",
-  //     // "artist": "AFI",
-  //     // "album": "Sing the Sorrow",
-  //     // "release_date": "2003-03-11",
-  //     // "genre": "post-hardcore, emo"
-  //   // }
-  //   let response = await axios.post("http://127.0.0.1:8000/api/music/", newSong);
-  //   if(response.status === 201){
-  //     await getAllSongs();
-  //   }
-  //   setSongs(response.data);
-  // }
+  
 
   const DisplayMusicTable = () => {
     return (
@@ -45,19 +32,21 @@ const MusicTable = () => {
             <th scope="col">Release Date</th>
             <th scope="col">Genre</th>
             <th scope="col">❤️</th>
+            <th scope="col">Options</th>
           </tr>
         </thead>
         <tbody className="font">
-          {songs.map((music, index) => {
+          {songs.map((music, id) => {
             return (
               <tr>
-                <td>{index + 1}</td>
+                <td>{music.id}</td>
                 <td>{music.title}</td>
                 <td>{music.artist}</td>
                 <td>{music.album}</td>
                 <td>{music.release_date}</td>
                 <td>{music.genre}</td>
                 <td>{music.like}</td>
+                <td><DeleteSong music={music.id} /></td>
               </tr>
             );
           })}
