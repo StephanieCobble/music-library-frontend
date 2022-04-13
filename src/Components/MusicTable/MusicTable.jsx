@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteSong from "../DeleteSong/DeleteSong";
+import EditSong from "../EditSong/EditSong";
 
 //updated to reflect correct naming in user stories
 
@@ -47,6 +48,7 @@ const MusicTable = () => {
                 <td>{music.genre}</td>
                 <td>{music.like}</td>
                 <td><DeleteSong music={music.id} /></td>
+                <td><EditSong music={music.id}/></td>
               </tr>
             );
           })}
